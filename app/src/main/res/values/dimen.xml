@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Margins -->
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_bigger">32dp</dimen>
+    <dimen name="margin_biggest">64dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_medium">8dp</dimen>
+
+    <!-- Text Size -->
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_bigger">24sp</dimen>
+
+    <!-- Stroke Width -->
+    <dimen name="stroke">1dp</dimen>
+
+    <!-- Card Corner Radius -->
+    <dimen name="corner_small">4dp</dimen>
+    <dimen name="corner_medium">10dp</dimen>
+
+    <integer name="zero">0</integer>
+
+</resources>
