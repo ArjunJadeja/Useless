@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
 import com.arjun.useless.databinding.ActivityMainBinding
 import kotlin.random.Random
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -109,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.exitAppButton.setOnClickListener {
-            exitProcess(0)
+            finishAffinity()
         }
 
     }
