@@ -1,9 +1,14 @@
 <h1 align="center">Useless</h1>
 
-
 <p align="center">  
 👾Useless android app is inspired by an Useless box, which does nothing useful but is great for wasting time.</p>
 
+## Preview
+<p float="left">
+  <img src="assets/first_screen.png" width="265" /> 
+  <img src="assets/second_screen.png" width="265" /> 
+  <img src="assets/third_screen.png" width="265" /> 
+</p>
 
 ## Download
 Go to the [Releases](https://github.com/ArjunJadeja/Useless/releases) to download the latest APK.
