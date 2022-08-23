@@ -5,9 +5,9 @@
 
 ## Preview
 <p float="left">
-  <img src="assets/screen_first.png" width="265" /> 
-  <img src="assets/screen_second.png" width="265" /> 
-  <img src="assets/screen_third.png" width="265" /> 
+  <img src="assets/first_screen.png" width="265" /> 
+  <img src="assets/second_screen.png" width="265" /> 
+  <img src="assets/third_screen.png" width="265" /> 
 </p>
 
 ## Download
