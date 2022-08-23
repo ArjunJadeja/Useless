@@ -21,5 +21,4 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun setCount(count: Int) {
         _clickCount.value = count
     }
-
 }

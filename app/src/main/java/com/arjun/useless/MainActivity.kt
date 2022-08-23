@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
 import com.arjun.useless.databinding.ActivityMainBinding
 import kotlin.random.Random
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,18 +16,8 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: GameViewModel by viewModels()
 
     private val soundPool = SoundPool.Builder().setMaxStreams(13).build()
-    private var soundOne = R.integer.zero
-    private var soundTwo = R.integer.zero
-    private var soundThree = R.integer.zero
-    private var soundFour = R.integer.zero
-    private var soundFive = R.integer.zero
-    private var soundSix = R.integer.zero
-    private var soundSeven = R.integer.zero
-    private var soundEight = R.integer.zero
-    private var soundNine = R.integer.zero
-    private var soundTen = R.integer.zero
-    private var soundEleven = R.integer.zero
-    private var soundTwelve = R.integer.zero
+    private var clickSound = R.integer.zero
+    private var finishSound = R.integer.zero
 
     private var clickCount = 0
     private var topScore = 0
@@ -44,18 +33,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        soundOne = soundPool.load(this, R.raw.sound_one, 1)
-        soundTwo = soundPool.load(this, R.raw.sound_two, 1)
-        soundThree = soundPool.load(this, R.raw.sound_three, 1)
-        soundFour = soundPool.load(this, R.raw.sound_four, 1)
-        soundFive = soundPool.load(this, R.raw.sound_five, 1)
-        soundSix = soundPool.load(this, R.raw.sound_six, 1)
-        soundSeven = soundPool.load(this, R.raw.sound_seven, 1)
-        soundEight = soundPool.load(this, R.raw.sound_eight, 1)
-        soundNine = soundPool.load(this, R.raw.sound_nine, 1)
-        soundTen = soundPool.load(this, R.raw.sound_ten, 1)
-        soundEleven = soundPool.load(this, R.raw.sound_eleven, 1)
-        soundTwelve = soundPool.load(this, R.raw.sound_twelve, 1)
+        clickSound = soundPool.load(this, R.raw.click_sound, 1)
+        finishSound = soundPool.load(this, R.raw.finish_sound, 1)
 
         binding.gameViewCard.doOnLayout {
             cardWidth = it.width
@@ -76,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.clickButton.setOnClickListener {
-            playSound()
+            playClickSound()
             clickCount++
             viewModel.setCount(clickCount)
             if (clickCount > topScore) {
@@ -98,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                 binding.gameStatusButton.text = "Start"
                 binding.gameStatusButton.setStrokeColorResource(R.color.green)
                 binding.gameStatusButton.setTextColor(resources.getColor(R.color.green))
+                playFinishSound()
                 showResult()
             }
         }
@@ -109,9 +89,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.exitAppButton.setOnClickListener {
-            exitProcess(0)
+            finishAffinity()
         }
-
     }
 
     private fun setMargins(left: Int, top: Int) {
@@ -128,21 +107,12 @@ class MainActivity : AppCompatActivity() {
         binding.clickButton.visibility = View.VISIBLE
     }
 
-    private fun playSound() {
-        when ((0..11).random()) {
-            0 -> soundPool.play(soundOne, 1f, 1f, 1, 0, 1f)
-            1 -> soundPool.play(soundTwo, 1f, 1f, 1, 0, 1f)
-            2 -> soundPool.play(soundThree, 1f, 1f, 1, 0, 1f)
-            3 -> soundPool.play(soundFour, 1f, 1f, 1, 0, 1f)
-            4 -> soundPool.play(soundFive, 1f, 1f, 1, 0, 1f)
-            5 -> soundPool.play(soundSix, 1f, 1f, 1, 0, 1f)
-            6 -> soundPool.play(soundSeven, 1f, 1f, 1, 0, 1f)
-            7 -> soundPool.play(soundEight, 1f, 1f, 1, 0, 1f)
-            8 -> soundPool.play(soundNine, 1f, 1f, 1, 0, 1f)
-            9 -> soundPool.play(soundTen, 1f, 1f, 1, 0, 1f)
-            10 -> soundPool.play(soundEleven, 1f, 1f, 1, 0, 1f)
-            11 -> soundPool.play(soundTwelve, 1f, 1f, 1, 0, 1f)
-        }
+    private fun playClickSound() {
+        soundPool.play(clickSound, 1f, 1f, 1, 0, 1f)
+    }
+
+    private fun playFinishSound() {
+        soundPool.play(finishSound, 1f, 1f, 1, 0, 1f)
     }
 
     private fun showResult() {
@@ -162,5 +132,4 @@ class MainActivity : AppCompatActivity() {
         binding.topScoreCard.visibility = View.VISIBLE
         binding.ClickCountCard.visibility = View.VISIBLE
     }
-
 }
